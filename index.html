@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firstfruits</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
+    :root {
+      --bg: #091110;
+      --bg2: #12201d;
+      --panel: rgba(14, 27, 25, 0.9);
+      --panel2: rgba(21, 39, 36, 0.9);
+      --line: rgba(214, 241, 191, 0.12);
+      --text: #f3f6ef;
+      --muted: #91a39d;
+      --accent: #d3ff66;
+      --accent-soft: rgba(211,255,102,0.14);
+      --gold: #ffd883;
+      --blue: #8bcdfc;
+      --danger: #ff8b8b;
+      --shadow: 0 24px 60px rgba(0,0,0,0.32);
+      --r1: 28px;
+      --r2: 20px;
+      --r3: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(211,255,102,0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,216,131,0.08), transparent 22%),
+        linear-gradient(180deg, #08100f, #0b1413 45%, #091111);
+      color: var(--text);
+      font-family: "Instrument Sans", "Noto Sans KR", sans-serif;
+    }
+    body { padding: 16px; }
+    button, input, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .app {
+      max-width: 1440px; margin: 0 auto; overflow: hidden;
+      border: 1px solid var(--line); border-radius: 34px; box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(15,28,26,0.96), rgba(8,16,15,0.94));
+    }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; gap: 16px; align-items: center;
+      padding: 20px 24px; border-bottom: 1px solid var(--line);
+      background: rgba(12,23,22,0.88); backdrop-filter: blur(14px);
+    }
+    .brand { min-width: 230px; }
+    .kicker {
+      font: 600 11px "JetBrains Mono", monospace; letter-spacing: .16em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .title { font-size: 30px; font-weight: 800; letter-spacing: -.05em; }
+    .title span { color: var(--accent); }
+    .search {
+      flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px;
+      height: 52px; border-radius: 999px; border: 1px solid var(--line);
+      padding: 0 16px; background: rgba(255,255,255,0.04);
+    }
+    .search input {
+      flex: 1; min-width: 0; background: transparent; border: 0; outline: 0;
+      color: var(--text); font-size: 15px;
+    }
+    .search input::placeholder { color: var(--muted); }
+    .toolbar { display: flex; gap: 12px; }
+    .chip, .btn {
+      height: 48px; padding: 0 18px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      white-space: nowrap;
+    }
+    .chip { border: 1px solid var(--line); color: var(--muted); background: rgba(255,255,255,0.03); }
+    .chip strong { color: var(--text); }
+    .btn {
+      border: 0; cursor: pointer; font-weight: 800; color: #13200a;
+      background: linear-gradient(135deg, var(--accent), #fff0a2);
+    }
+    .layout { display: grid; grid-template-columns: 300px minmax(0,1fr); min-height: calc(100vh - 100px); }
+    aside { padding: 22px 18px 26px; border-right: 1px solid var(--line); }
+    .main { padding: 22px; }
+    .box {
+      border: 1px solid var(--line); border-radius: 24px; padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+    .box + .box { margin-top: 16px; }
+    .label {
+      font: 600 11px "JetBrains Mono", monospace; color: var(--muted);
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .count { font-size: 42px; font-weight: 800; letter-spacing: -.06em; line-height: 1; margin-bottom: 8px; }
+    .note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .stat { padding: 12px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .stat strong { display: block; font-size: 20px; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    .filter-list, .month-list { display: flex; flex-direction: column; gap: 8px; }
+    .filter, .month {
+      width: 100%; padding: 12px 14px; border-radius: 14px; cursor: pointer;
+      border: 1px solid transparent; color: var(--muted); background: transparent;
+      display: flex; justify-content: space-between; gap: 12px; text-align: left;
+    }
+    .filter.active, .filter:hover, .month:hover { color: var(--text); background: rgba(255,255,255,0.04); border-color: var(--line); }
+    .hero { display: grid; grid-template-columns: 1.15fr .95fr; gap: 16px; margin-bottom: 22px; }
+    .hero-copy, .latest { border: 1px solid var(--line); border-radius: 28px; overflow: hidden; }
+    .hero-copy {
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(211,255,102,0.16), transparent 34%),
+        linear-gradient(135deg, rgba(24,45,41,0.92), rgba(11,21,20,0.96));
+    }
+    .hero-copy h1 { margin: 16px 0 14px; max-width: 12ch; font-size: clamp(34px, 4vw, 60px); line-height: .98; letter-spacing: -.06em; }
+    .hero-copy p { max-width: 45ch; color: #bfd0c8; line-height: 1.7; font-size: 15px; }
+    .pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .pill, .badge {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      padding: 8px 12px; border: 1px solid rgba(255,255,255,0.1); font-size: 12px;
+      background: rgba(255,255,255,0.05); color: var(--muted);
+    }
+    .latest { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); cursor: pointer; }
+    .media, .thumb-fallback {
+      width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+      background: linear-gradient(135deg, #1f3532, #101d1b);
+    }
+    .thumb-fallback {
+      display: flex; align-items: center; justify-content: center;
+      font: 600 14px "JetBrains Mono", monospace; text-transform: uppercase; color: rgba(255,255,255,0.55);
+    }
+    .latest-body { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .latest-body h2 { font-size: 22px; line-height: 1.2; letter-spacing: -.04em; }
+    .meta { display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 13px; }
+    .section-head { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin-bottom: 16px; }
+    .section-head h3 { font-size: 22px; letter-spacing: -.04em; }
+    .section-head p { color: var(--muted); font-size: 14px; }
+    .month-section + .month-section { margin-top: 20px; }
+    .month-head { display: flex; justify-content: space-between; align-items: end; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .month-head strong { font-size: 19px; letter-spacing: -.04em; }
+    .month-head span { color: var(--muted); font: 600 11px "JetBrains Mono", monospace; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; }
+    .card {
+      overflow: hidden; min-height: 100%; cursor: pointer;
+      border: 1px solid var(--line); border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+    .card-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .overlay { position: relative; }
+    .overlay-info {
+      position: absolute; inset: auto 0 0 0; padding: 14px;
+      display: flex; justify-content: space-between; align-items: end; gap: 10px;
+      background: linear-gradient(180deg, transparent, rgba(8,15,14,0.84));
+    }
+    .day { padding: 7px 10px; border-radius: 999px; font: 600 11px "JetBrains Mono", monospace; border: 1px solid rgba(255,255,255,0.08); background: rgba(8,15,14,0.66); }
+    .card h4 {
+      min-height: 44px; font-size: 17px; line-height: 1.3; letter-spacing: -.03em;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .summary {
+      min-height: 40px; color: var(--muted); font-size: 13px; line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .link-btn {
+      height: 38px; padding: 0 14px; border-radius: 999px; font-size: 13px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04);
+    }
+    .link-btn.primary { background: var(--accent-soft); border-color: rgba(211,255,102,0.22); color: var(--accent); }
+    .type-both { color: var(--accent); } .type-share { color: var(--blue); } .type-archive { color: var(--gold); }
+    .empty { display: none; text-align: center; padding: 80px 20px; color: var(--muted); }
+    .empty.show { display: block; }
+    .empty h3 { margin-bottom: 10px; font-size: 28px; color: var(--text); }
+    .modal-bg, .detail-bg {
+      position: fixed; inset: 0; z-index: 100; display: none; padding: 18px;
+      align-items: center; justify-content: center; background: rgba(4,8,8,0.76); backdrop-filter: blur(12px);
+    }
+    .modal-bg.open, .detail-bg.open { display: flex; }
+    .sheet {
+      width: min(900px, 100%); overflow: hidden; border-radius: 28px;
+      border: 1px solid var(--line); background: linear-gradient(180deg, #10201d, #0b1414); box-shadow: var(--shadow);
+    }
+    .sheet-head, .sheet-actions { display: flex; justify-content: space-between; gap: 12px; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+    .sheet-head h2 { font-size: 28px; letter-spacing: -.05em; line-height: 1.05; }
+    .sheet-head p { margin-top: 8px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .xbtn {
+      width: 42px; height: 42px; flex-shrink: 0; cursor: pointer;
+      border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); color: var(--text);
+    }
+    .sheet-body { display: grid; grid-template-columns: 1.15fr .85fr; }
+    .pane, .side { padding: 24px; }
+    .side { border-left: 1px solid var(--line); background: rgba(255,255,255,0.02); }
+    .field + .field { margin-top: 16px; }
+    .field label {
+      display: block; margin-bottom: 8px; color: var(--muted);
+      font: 600 11px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .field input, .field textarea {
+      width: 100%; outline: 0; color: var(--text); border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); padding: 14px 16px;
+    }
+    .field textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+    .hint { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .status { display: none; margin-top: 12px; padding: 10px 12px; border-radius: 14px; font-size: 13px; line-height: 1.5; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .status.show { display: block; } .status.error { color: #ffb5b5; border-color: rgba(255,139,139,0.22); } .status.success { color: #ddf7a4; border-color: rgba(211,255,102,0.2); }
+    .preview { overflow: hidden; border-radius: 22px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+    .preview-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .preview-body h3 { font-size: 19px; line-height: 1.25; letter-spacing: -.04em; }
+    .preview-body p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .sheet-actions { border-top: 1px solid var(--line); border-bottom: 0; align-items: center; }
+    .detail-body { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(300px,.95fr); }
+    .detail-copy { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .detail-note { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .meta-box { padding: 14px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .meta-box strong { display: block; margin-bottom: 8px; color: var(--muted); font: 600 11px "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .toast {
+      position: fixed; left: 50%; bottom: 20px; z-index: 200;
+      transform: translateX(-50%) translateY(20px); opacity: 0;
+      padding: 14px 18px; border-radius: 999px; color: var(--text);
+      background: rgba(8,15,14,0.96); border: 1px solid rgba(255,255,255,0.08);
+      transition: .18s;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    @media (max-width: 1100px) {
+      .layout, .hero, .sheet-body, .detail-body { grid-template-columns: 1fr; }
+      aside { border-right: 0; border-bottom: 1px solid var(--line); }
+      .side { border-left: 0; border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 820px) {
+      body { padding: 8px; }
+      .topbar { flex-wrap: wrap; }
+      .brand, .search, .toolbar { width: 100%; }
+      .toolbar { justify-content: space-between; flex-wrap: wrap; }
+      .chip, .btn { flex: 1; }
+      .main { padding: 18px; }
+      .grid { grid-template-columns: 1fr; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .sheet-head h2 { font-size: 24px; }
+      .sheet-actions { flex-direction: column-reverse; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="kicker">FirstFruits Archive</div>
+        <div class="title">Link <span>Harvest</span></div>
+      </div>
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16ZM21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input id="searchInput" type="search" placeholder="제목, 도메인, 메모로 찾기" />
+      </div>
+      <div class="toolbar">
+        <div class="chip"><strong id="visibleCount">0</strong> 보이는 링크</div>
+        <button class="btn" id="openModalBtn">+ 링크 추가</button>
+      </div>
+    </header>
+    <div class="layout">
+      <aside>
+        <div class="box">
+          <div class="label">Overview</div>
+          <div class="count" id="totalCount">0</div>
+          <div class="note">CSV 기반 초기 목록 위에 새 링크를 계속 쌓는 MVP입니다.</div>
+          <div class="stats">
+            <div class="stat"><strong id="shareCount">0</strong><span>공유 링크 있음</span></div>
+            <div class="stat"><strong id="archiveCount">0</strong><span>아카이브 있음</span></div>
+            <div class="stat"><strong id="monthCount">0</strong><span>월 단위 정리</span></div>
+            <div class="stat"><strong id="localCount">0</strong><span>직접 추가한 항목</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="label">Filters</div>
+          <div class="filter-list" id="filterList"></div>
+        </div>
+        <div class="box">
+          <div class="label">Months</div>
+          <div class="month-list" id="monthList"></div>
+        </div>
+      </aside>
+      <main class="main">
+        <section class="hero">
+          <article class="hero-copy">
+            <div class="kicker" style="color:var(--gold);">MVP link organizer</div>
+            <h1>최신 순으로 정리되는 링크 아카이브</h1>
+            <p>링크를 붙여 넣으면 제목과 썸네일을 먼저 시도해 채우고, 공유 URL과 직접 만든 아카이브 URL을 한 카드 안에 같이 보관할 수 있게 만들었습니다.</p>
+            <div class="pills">
+              <span class="pill">CSV seed</span>
+              <span class="pill">auto title</span>
+              <span class="pill">thumbnail fetch</span>
+              <span class="pill">shared / archive split</span>
+            </div>
+          </article>
+          <article class="latest" id="latestCard"></article>
+        </section>
+        <section>
+          <div class="section-head">
+            <div>
+              <h3>Archive Timeline</h3>
+              <p id="resultSummary">링크를 정리하는 중입니다.</p>
+            </div>
+          </div>
+          <div id="timeline"></div>
+          <div class="empty" id="emptyState">
+            <h3>조건에 맞는 링크가 아직 없어요</h3>
+            <p>검색어나 필터를 바꾸거나 새 링크를 추가하면 최신 날짜 기준으로 바로 위에 쌓입니다.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="modal-bg" id="modalBg">
+    <div class="sheet">
+      <div class="sheet-head">
+        <div>
+          <h2>링크 추가</h2>
+          <p>공유 링크 또는 아카이브 링크를 넣으면 제목과 썸네일을 먼저 시도해 채웁니다.</p>
+        </div>
+        <button class="xbtn" id="closeModalBtn" aria-label="닫기">×</button>
+      </div>
+      <div class="sheet-body">
+        <div class="pane">
+          <div class="field"><label for="shareUrl">공유 링크 URL</label><input id="shareUrl" type="url" placeholder="https://..." /></div>
+          <div class="field"><label for="archiveUrl">직접 만든 아카이브 링크</label><input id="archiveUrl" type="url" placeholder="https://..." /><div class="hint">둘 중 하나만 있어도 저장됩니다.</div></div>
+          <div class="field"><label for="entryTitle">제목</label><input id="entryTitle" type="text" placeholder="자동으로 채워지지 않으면 직접 입력" /></div>
+          <div class="field"><label for="entryDate">날짜</label><input id="entryDate" type="date" /></div>
+          <div class="field"><label for="entryThumb">썸네일 URL</label><input id="entryThumb" type="url" placeholder="자동 추출 또는 직접 입력" /></div>
+          <div class="field"><label for="entryNote">메모</label><textarea id="entryNote" placeholder="예: 본편, Q&A, PDF 정리본"></textarea></div>
+          <div class="status" id="fetchStatus"></div>
+        </div>
+        <div class="side">
+          <div class="label">Live Preview</div>
+          <div class="preview">
+            <div id="previewMedia"></div>
+            <div class="preview-body">
+              <div id="previewBadges" class="pills" style="margin-top:0;"></div>
+              <h3 id="previewTitle">새 링크 카드 미리보기</h3>
+              <p id="previewMeta">URL을 입력하면 도메인, 제목, 썸네일을 여기서 먼저 보여줍니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sheet-actions">
+        <button class="link-btn" id="fetchMetaBtn">메타 다시 가져오기</button>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="link-btn" id="cancelModalBtn">취소</button>
+          <button class="link-btn primary" id="saveEntryBtn">저장하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-bg" id="detailBg">
+    <div class="sheet">
+      <div class="sheet-head">
+        <div>
+          <h2 id="detailTitle">링크 상세</h2>
+          <p>공유 링크와 아카이브 링크를 함께 확인합니다.</p>
+        </div>
+        <button class="xbtn" id="closeDetailBtn" aria-label="닫기">×</button>
+      </div>
+      <div class="detail-body">
+        <div id="detailMedia"></div>
+        <div class="detail-copy">
+          <div id="detailBadges" class="pills" style="margin-top:0;"></div>
+          <div class="detail-note" id="detailNote"></div>
+          <div class="links" id="detailLinks"></div>
+          <div class="meta-grid">
+            <div class="meta-box"><strong>Date</strong><span id="detailDate"></span></div>
+            <div class="meta-box"><strong>Domain</strong><span id="detailDomain"></span></div>
+            <div class="meta-box"><strong>Shared URL</strong><span id="detailShare"></span></div>
+            <div class="meta-box"><strong>Archive URL</strong><span id="detailArchive"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    const STORAGE_KEY = "firstfruits_link_archive_v1";
+    const SEED_ROWS =
+      [{"제목":"열정은 어디에서 오는가","Archive":"https://youtu.be/xDRW4gvB_AY","URL":"https://youtu.be/XcHXAKevshs","날짜":"2026년 01월 04일"},{"제목":"건강의 10원칙","Archive":"https://youtu.be/jKHcephBwYA","URL":"https://youtu.be/KDjWo6MvQUM","날짜":"2026년 01월 07일"},{"제목":"좋은 조직 문화 만들기(교제의 원칙)","Archive":"https://youtu.be/Rtyja3FIPnI","URL":"https://youtu.be/Vc0XtFA1YEw","날짜":"2026년 01월 11일"},{"제목":"천주교 vs 개신교(어느 쪽이 맞나요?)","Archive":"https://youtu.be/_iwKD_fRBCU","URL":"https://youtu.be/1-Q6Pjz9QOA","날짜":"2026년 01월 14일"},{"제목":"자유로운 신앙생활 vs 숨 막히는 신앙생활","Archive":"https://youtu.be/Dk_YYyv_UuE","URL":"https://youtu.be/yqt2-U0yhNs","날짜":"2026년 01월 18일"},{"제목":"AI의 미래와 성경적 신호","Archive":"https://youtu.be/3owvYKIFR_c","URL":"https://youtu.be/knD-3qX5Lis","날짜":"2026년 01월 21일"},{"제목":"https://www.youtube.com/watch?v=idVjfo_e_DA","Archive":"https://youtu.be/QI8hCayijDo","URL":"https://youtu.be/idVjfo_e_DA","날짜":"2026년 01월 24일"},{"제목":"생각보다 늦게 오는 상과 벌","Archive":"https://youtu.be/pLt7-dtCBBg","URL":"https://youtu.be/rPEvDr7xTGU","날짜":"2026년 01월 25일"},{"제목":"욕구와 의도","Archive":"https://youtu.be/tFVXGKpD5-Q","URL":"https://youtu.be/3zSbBL1rA_8","날짜":"2026년 01월 28일"},{"제목":"하나님이 감사하라고 하시는 이유","Archive":"https://youtu.be/hYlsc8IQSVk","URL":"https://youtu.be/5nMFYLUvr84","날짜":"2026년 02월 01일"},{"제목":"진짜 하나님을 위해서 맞아요","Archive":"https://youtu.be/k5Owii8nvxE","URL":"https://youtu.be/toDy2YEksFY","날짜":"2026년 02월 04일"},{"제목":"교회를 산모에 비유한 이유(+허태림님 간증)","Archive":"https://youtu.be/r8aE6GCSeFw","URL":"https://youtu.be/x_Lp-BzGjsw","날짜":"2026년 02월 08일"},{"제목":"첫열매들 교회의 교리가 뭐가 다른가요?","Archive":"https://youtu.be/vZnXtiupLTM","URL":"https://youtu.be/g9XE68tm5Ic","날짜":"2026년 02월 11일"},{"제목":"260215 사탄의 일꾼(+정승현님 간증)","Archive":"https://youtu.be/97pRtNDRcNQ","URL":"https://www.youtube.com/watch?v=C3y7IpzCp8o","날짜":"2026년 02월 15일"},{"제목":"260218 사탄 정확히 알기","Archive":"https://youtu.be/5nfPEchUFFM","URL":"https://www.youtube.com/watch?v=Ixce51kkc58","날짜":"2026년 02월 18일"},{"제목":"260222 버리지 못하는 한 가지가 당신을 망칩니다","Archive":"https://youtu.be/UjyRKKoJ_rY","URL":"https://www.youtube.com/watch?v=3oTI7pkKd0g","날짜":"2026년 02월 22일"},{"제목":"260225 깨달음의 눈","Archive":"https://youtu.be/4BWfisTCz4U","URL":"https://youtu.be/wyZafQd_Oag","날짜":"2026년 02월 25일"},{"제목":"260302 하나님은 왜 비극적인 일들을 허락하실까?","Archive":"https://youtu.be/iX2MMKu7ASs","URL":"https://youtu.be/ZWC_YjPAPbM","날짜":"2026년 03월 01일"},{"제목":"(Unknow)","Archive":"","URL":"","날짜":"2026년 03월 04일"},{"제목":"260308 선물로 받는 믿음의 증인들(+유한종님 간증)","Archive":"https://youtu.be/2If5gAfR-sM","URL":"https://www.youtube.com/watch?v=0l2BuXCH3ss","날짜":"2026년 03월 08일"},{"제목":"260311 욥기 잘못 알고 계십니다","Archive":"https://youtu.be/-2I69kOqfuc","URL":"https://youtu.be/hn_oxGu3REU","날짜":"2026년 03월 11일"},{"제목":"260315 지식의 단계적 계시(+김성관님 간증)","Archive":"https://youtu.be/WXci5aHePGA","URL":"https://youtu.be/QJ8-I86rZeI","날짜":"2026년 03월 15일"},{"제목":"AI를 이용한 검증 (pdf 파일)","Archive":"","URL":"","날짜":"2026년 03월 18일"},{"제목":"260322 밀크시리즈 변경사항","Archive":"https://youtu.be/OZTl-LypfoI","URL":"https://youtu.be/S2lbkAiXllQ","날짜":"2026년 03월 22일"},{"제목":"260325 조금씩 성장하고 있으면 된겁니다","Archive":"https://youtu.be/A4lrwdpNqiM","URL":"https://youtu.be/WpX2Q7XTO5k","날짜":"2026년 03월 25일"},{"제목":"260329 상반기 복음세미나","Archive":"","URL":"https://youtu.be/8GZcyEk59Vk","날짜":"2026년 03월 29일"},{"제목":"260329 상반기 복음세미나 Q&A","Archive":"","URL":"https://youtu.be/EH--Ew6Km-Q","날짜":"2026년 03월 29일"},{"제목":"2026년 MILK1. 천국에 가는지 확인해보세요!","Archive":"","URL":"https://youtu.be/kX4pnUrEUdw","날짜":"2026년 04월 01일"},{"제목":"2026년 MILK2. 인간의 영/혼/몸(몸을 주신 이유)","Archive":"","URL":"https://youtu.be/0kQCixrlRrs","날짜":"2026년 04월 05일"},{"제목":"2026년 MILK3-1. 예수-피가 있는 하나님","Archive":"","URL":"https://youtu.be/pGMZMMLR-iY","날짜":"2026년 04월 08일"},{"제목":"2026년 MILK3-2 예수-피가 있는 하나님","Archive":"","URL":"https://youtu.be/RvkHqQuPX40","날짜":"2026년 04월 12일"}];
+
+    const state = { entries: [], search: "", filter: "all", month: "all", timer: null };
+
+    const refs = {
+      totalCount: document.getElementById("totalCount"),
+      shareCount: document.getElementById("shareCount"),
+      archiveCount: document.getElementById("archiveCount"),
+      monthCount: document.getElementById("monthCount"),
+      localCount: document.getElementById("localCount"),
+      visibleCount: document.getElementById("visibleCount"),
+      filterList: document.getElementById("filterList"),
+      monthList: document.getElementById("monthList"),
+      latestCard: document.getElementById("latestCard"),
+      timeline: document.getElementById("timeline"),
+      resultSummary: document.getElementById("resultSummary"),
+      emptyState: document.getElementById("emptyState"),
+      searchInput: document.getElementById("searchInput"),
+      modalBg: document.getElementById("modalBg"),
+      detailBg: document.getElementById("detailBg"),
+      shareUrl: document.getElementById("shareUrl"),
+      archiveUrl: document.getElementById("archiveUrl"),
+      entryTitle: document.getElementById("entryTitle"),
+      entryDate: document.getElementById("entryDate"),
+      entryThumb: document.getElementById("entryThumb"),
+      entryNote: document.getElementById("entryNote"),
+      fetchStatus: document.getElementById("fetchStatus"),
+      previewMedia: document.getElementById("previewMedia"),
+      previewBadges: document.getElementById("previewBadges"),
+      previewTitle: document.getElementById("previewTitle"),
+      previewMeta: document.getElementById("previewMeta"),
+      detailTitle: document.getElementById("detailTitle"),
+      detailMedia: document.getElementById("detailMedia"),
+      detailBadges: document.getElementById("detailBadges"),
+      detailNote: document.getElementById("detailNote"),
+      detailLinks: document.getElementById("detailLinks"),
+      detailDate: document.getElementById("detailDate"),
+      detailDomain: document.getElementById("detailDomain"),
+      detailShare: document.getElementById("detailShare"),
+      detailArchive: document.getElementById("detailArchive"),
+      toast: document.getElementById("toast")
+    };
+
+    function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+    function isUrl(v) { try { return !!new URL(v); } catch { return false; } }
+    function esc(v) { return String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
+    function parseKoreanDate(v) { const m = String(v || "").match(/(\d{4})년\s*(\d{2})월\s*(\d{2})일/); return m ? `${m[1]}-${m[2]}-${m[3]}` : ""; }
+    function formatDate(v) { return v ? new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${v}T00:00:00`)) : "날짜 없음"; }
+    function formatMonth(v) { const [y, m] = v.split("-"); return `${y}년 ${Number(m)}월`; }
+    function primaryUrl(e) { return e.shareUrl || e.archiveUrl || ""; }
+    function typeOf(e) { return e.shareUrl && e.archiveUrl ? "both" : e.archiveUrl ? "archive" : e.shareUrl ? "share" : "manual"; }
+    function typeLabel(t) { return t === "both" ? "shared + archive" : t === "archive" ? "archive only" : t === "share" ? "shared link" : "manual"; }
+    function siteLabel(url) {
+      if (!isUrl(url)) return "manual";
+      const host = new URL(url).hostname.replace(/^www\./, "");
+      return host.split(".")[0].replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    }
+    function youtubeId(url) {
+      if (!isUrl(url)) return "";
+      const u = new URL(url);
+      const h = u.hostname.replace(/^www\./, "");
+      if (h === "youtu.be") return u.pathname.slice(1).split("/")[0];
+      if (h.includes("youtube.com")) {
+        if (u.pathname.startsWith("/watch")) return u.searchParams.get("v") || "";
+        if (u.pathname.startsWith("/shorts/")) return u.pathname.split("/")[2] || "";
+        if (u.pathname.startsWith("/embed/")) return u.pathname.split("/")[2] || "";
+      }
+      return "";
+    }
+    function youtubeThumb(url) { const id = youtubeId(url); return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : ""; }
+    function cleanTitle(title, obj) {
+      if (title && title !== "(Unknow)" && !isUrl(title)) return title.trim();
+      const url = primaryUrl(obj);
+      if (!url) return "제목 미정 링크";
+      const id = youtubeId(url);
+      return id ? `YouTube 영상 ${id.slice(0, 6)}` : siteLabel(url);
+    }
+    function domainOf(obj) {
+      const url = primaryUrl(obj);
+      if (!isUrl(url)) return "직접 기록";
+      return new URL(url).hostname.replace(/^www\./, "");
+    }
+    function normalize(raw, source = "seed") {
+      const entry = {
+        id: raw.id || uid(),
+        title: raw.title || raw["제목"] || "",
+        shareUrl: (raw.shareUrl || raw.URL || "").trim(),
+        archiveUrl: (raw.archiveUrl || raw.Archive || "").trim(),
+        date: raw.date || parseKoreanDate(raw["날짜"]) || new Date().toISOString().slice(0, 10),
+        thumb: (raw.thumb || "").trim(),
+        note: raw.note || "",
+        source: raw.source || source,
+        createdAt: raw.createdAt || Date.now()
+      };
+      entry.title = cleanTitle(entry.title, entry);
+      entry.thumb = entry.thumb || youtubeThumb(entry.shareUrl) || youtubeThumb(entry.archiveUrl) || "";
+      entry.domain = domainOf(entry);
+      return entry;
+    }
+    function entryKey(e) { return [e.date, e.title, e.shareUrl, e.archiveUrl].join("::").toLowerCase(); }
+    function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.entries.filter(e => e.source === "local"))); }
+    function loadEntries() {
+      let local = [];
+      try { local = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch {}
+      const map = new Map();
+      [...SEED_ROWS.map(row => normalize(row, "seed")), ...local.map(row => normalize(row, "local"))].forEach(entry => {
+        const key = entryKey(entry);
+        if (!map.has(key)) map.set(key, entry);
+      });
+      state.entries = [...map.values()].sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, "ko"));
+      persist();
+    }
+
+    function filteredEntries() {
+      return state.entries.filter(entry => {
+        const q = state.search.trim().toLowerCase();
+        const hay = [entry.title, entry.note, entry.domain, entry.shareUrl, entry.archiveUrl].join(" ").toLowerCase();
+        const month = entry.date.slice(0, 7);
+        const matchSearch = !q || hay.includes(q);
+        const matchFilter =
+          state.filter === "all" ||
+          (state.filter === "both" && typeOf(entry) === "both") ||
+          (state.filter === "share" && !!entry.shareUrl) ||
+          (state.filter === "archive" && !!entry.archiveUrl) ||
+          (state.filter === "local" && entry.source === "local") ||
+          (state.filter === "missing-thumb" && !entry.thumb);
+        const matchMonth = state.month === "all" || state.month === month;
+        return matchSearch && matchFilter && matchMonth;
+      }).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, "ko"));
+    }
+
+    function byMonth(entries) {
+      return entries.reduce((acc, entry) => {
+        const key = entry.date.slice(0, 7);
+        (acc[key] ||= []).push(entry);
+        return acc;
+      }, {});
+    }
+
+    function stats() {
+      refs.totalCount.textContent = state.entries.length;
+      refs.shareCount.textContent = state.entries.filter(e => e.shareUrl).length;
+      refs.archiveCount.textContent = state.entries.filter(e => e.archiveUrl).length;
+      refs.monthCount.textContent = new Set(state.entries.map(e => e.date.slice(0, 7))).size;
+      refs.localCount.textContent = state.entries.filter(e => e.source === "local").length;
+    }
+
+    function mediaHtml(entry) {
+      return entry.thumb
+        ? `<img class="media" src="${esc(entry.thumb)}" alt="${esc(entry.title)}" loading="lazy" onerror="this.outerHTML='${`<div class=&quot;thumb-fallback&quot;>${esc(entry.domain)}</div>`}'">`
+        : `<div class="thumb-fallback">${esc(entry.domain)}</div>`;
+    }
+
+    function renderFilters() {
+      const items = [
+        ["all", "전체 링크", state.entries.length],
+        ["both", "공유 + 아카이브", state.entries.filter(e => typeOf(e) === "both").length],
+        ["share", "공유 링크 있음", state.entries.filter(e => e.shareUrl).length],
+        ["archive", "아카이브 있음", state.entries.filter(e => e.archiveUrl).length],
+        ["local", "직접 추가한 항목", state.entries.filter(e => e.source === "local").length],
+        ["missing-thumb", "썸네일 없는 항목", state.entries.filter(e => !e.thumb).length]
+      ];
+      refs.filterList.innerHTML = items.map(([key, label, count]) => `
+        <button class="filter ${state.filter === key ? "active" : ""}" data-filter="${key}">
+          <span>${esc(label)}</span><span>${count}</span>
+        </button>
+      `).join("");
+      refs.filterList.querySelectorAll("[data-filter]").forEach(btn => btn.onclick = () => { state.filter = btn.dataset.filter; render(); });
+
+      const grouped = byMonth(state.entries);
+      const months = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
+      refs.monthList.innerHTML = `
+        <button class="month" data-month="all"><span>전체 월 보기</span><span>${state.entries.length}</span></button>
+        ${months.map(month => `
+          <button class="month" data-month="${month}" style="${state.month === month ? "color:var(--text);background:rgba(255,255,255,0.04);border-color:var(--line);" : ""}">
+            <span>${esc(formatMonth(month))}</span><span>${grouped[month].length}</span>
+          </button>
+        `).join("")}
+      `;
+      refs.monthList.querySelectorAll("[data-month]").forEach(btn => btn.onclick = () => { state.month = btn.dataset.month; render(); });
+    }
+
+    function renderLatest(entries) {
+      const latest = entries[0] || state.entries[0];
+      if (!latest) {
+        refs.latestCard.innerHTML = `<div class="thumb-fallback">No media</div><div class="latest-body"><h2>아직 링크가 없습니다</h2><p class="meta">새 링크를 추가하면 여기에 최신 항목이 강조됩니다.</p></div>`;
+        return;
+      }
+      refs.latestCard.innerHTML = `
+        ${mediaHtml(latest)}
+        <div class="latest-body">
+          <div class="pills" style="margin-top:0;">
+            <span class="badge type-${typeOf(latest)}">${esc(typeLabel(typeOf(latest)))}</span>
+            <span class="badge">${esc(formatDate(latest.date))}</span>
+          </div>
+          <h2>${esc(latest.title)}</h2>
+          <div class="meta"><span>${esc(latest.domain)}</span><span>${latest.source === "local" ? "직접 추가" : "CSV 시드"}</span></div>
+          <div class="links">
+            ${latest.shareUrl ? `<a class="link-btn" href="${esc(latest.shareUrl)}" target="_blank" rel="noreferrer">공유 링크</a>` : ""}
+            ${latest.archiveUrl ? `<a class="link-btn primary" href="${esc(latest.archiveUrl)}" target="_blank" rel="noreferrer">아카이브</a>` : ""}
+          </div>
+        </div>
+      `;
+      refs.latestCard.onclick = e => { if (!e.target.closest("a")) openDetail(latest.id); };
+    }
+
+    function cardHtml(entry) {
+      const summary = entry.note || `${entry.domain}에서 연결된 ${typeLabel(typeOf(entry))} 항목`;
+      return `
+        <article class="card" data-id="${esc(entry.id)}">
+          <div class="overlay">
+            ${mediaHtml(entry)}
+            <div class="overlay-info">
+              <span class="badge type-${typeOf(entry)}">${esc(typeLabel(typeOf(entry)))}</span>
+              <span class="day">${esc(entry.date.slice(5).replace("-", "."))}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>${esc(entry.title)}</h4>
+            <div class="meta"><span>${esc(entry.domain)}</span><span>${entry.source === "local" ? "직접 추가" : "CSV"}</span></div>
+            <div class="summary">${esc(summary)}</div>
+            <div class="links">
+              ${entry.shareUrl ? `<a class="link-btn" href="${esc(entry.shareUrl)}" target="_blank" rel="noreferrer">공유 링크</a>` : ""}
+              ${entry.archiveUrl ? `<a class="link-btn primary" href="${esc(entry.archiveUrl)}" target="_blank" rel="noreferrer">아카이브</a>` : ""}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderTimeline(entries) {
+      refs.visibleCount.textContent = entries.length;
+      refs.resultSummary.textContent = `${state.month === "all" ? "전체 월" : formatMonth(state.month)} 기준 ${entries.length}개를 최신 날짜 순으로 보여주고 있습니다.`;
+      if (!entries.length) {
+        refs.timeline.innerHTML = "";
+        refs.emptyState.classList.add("show");
+        return;
+      }
+      refs.emptyState.classList.remove("show");
+      const grouped = byMonth(entries);
+      refs.timeline.innerHTML = Object.keys(grouped).sort((a, b) => b.localeCompare(a)).map(month => `
+        <section class="month-section">
+          <div class="month-head"><strong>${esc(formatMonth(month))}</strong><span>${grouped[month].length} items</span></div>
+          <div class="grid">${grouped[month].map(cardHtml).join("")}</div>
+        </section>
+      `).join("");
+      refs.timeline.querySelectorAll("[data-id]").forEach(card => card.onclick = e => { if (!e.target.closest("a")) openDetail(card.dataset.id); });
+    }
+
+    function render() {
+      const entries = filteredEntries();
+      stats();
+      renderFilters();
+      renderLatest(entries);
+      renderTimeline(entries);
+    }
+
+    function toast(msg) {
+      refs.toast.textContent = msg;
+      refs.toast.classList.add("show");
+      clearTimeout(toast.t);
+      toast.t = setTimeout(() => refs.toast.classList.remove("show"), 2400);
+    }
+
+    function setStatus(msg = "", tone = "") {
+      refs.fetchStatus.textContent = msg;
+      refs.fetchStatus.className = "status";
+      if (!msg) return;
+      refs.fetchStatus.classList.add("show");
+      if (tone) refs.fetchStatus.classList.add(tone);
+    }
+
+    function resetForm() {
+      refs.shareUrl.value = "";
+      refs.archiveUrl.value = "";
+      refs.entryTitle.value = "";
+      refs.entryDate.value = new Date().toISOString().slice(0, 10);
+      refs.entryThumb.value = "";
+      refs.entryNote.value = "";
+      refs.previewMedia.innerHTML = `<div class="thumb-fallback">Preview</div>`;
+      refs.previewBadges.innerHTML = "";
+      refs.previewTitle.textContent = "새 링크 카드 미리보기";
+      refs.previewMeta.textContent = "URL을 입력하면 도메인, 제목, 썸네일을 여기서 먼저 보여줍니다.";
+      setStatus("");
+    }
+
+    function openModal() { resetForm(); refs.modalBg.classList.add("open"); refs.shareUrl.focus(); }
+    function closeModal() { refs.modalBg.classList.remove("open"); }
+    function closeDetail() { refs.detailBg.classList.remove("open"); }
+
+    function previewEntry() {
+      const entry = normalize({
+        title: refs.entryTitle.value.trim(),
+        shareUrl: refs.shareUrl.value.trim(),
+        archiveUrl: refs.archiveUrl.value.trim(),
+        date: refs.entryDate.value || new Date().toISOString().slice(0, 10),
+        thumb: refs.entryThumb.value.trim(),
+        note: refs.entryNote.value.trim(),
+        source: "local"
+      }, "local");
+      refs.previewMedia.innerHTML = entry.thumb ? `<img class="media" src="${esc(entry.thumb)}" alt="${esc(entry.title)}" />` : `<div class="thumb-fallback">${esc(entry.domain)}</div>`;
+      refs.previewBadges.innerHTML = `<span class="badge type-${typeOf(entry)}">${esc(typeLabel(typeOf(entry)))}</span>${entry.shareUrl ? `<span class="badge">shared</span>` : ""}${entry.archiveUrl ? `<span class="badge">archive</span>` : ""}`;
+      refs.previewTitle.textContent = entry.title;
+      refs.previewMeta.textContent = `${formatDate(entry.date)} · ${entry.domain}`;
+    }
+
+    async function fetchMeta(url) {
+      if (!isUrl(url)) throw new Error("유효한 URL이 필요합니다.");
+      const yt = youtubeThumb(url);
+      const fallback = { title: siteLabel(url), thumb: yt, description: "", domain: new URL(url).hostname.replace(/^www\./, "") };
+      const sources = [
+        `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=false&meta=false&embed=soundcloud,twitter,x,youtube`,
+        `https://noembed.com/embed?url=${encodeURIComponent(url)}`
+      ];
+      for (const endpoint of sources) {
+        try {
+          const res = await fetch(endpoint);
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (endpoint.includes("microlink")) {
+            const d = data.data || {};
+            return { title: d.title || fallback.title, thumb: d.image?.url || d.logo?.url || yt || "", description: d.description || "", domain: d.publisher || fallback.domain };
+          }
+          return { title: data.title || fallback.title, thumb: data.thumbnail_url || yt || "", description: data.author_name || data.provider_name || "", domain: data.provider_name || fallback.domain };
+        } catch {}
+      }
+      return fallback;
+    }
+
+    async function hydrateMeta() {
+      const url = refs.shareUrl.value.trim() || refs.archiveUrl.value.trim();
+      if (!url) { setStatus("먼저 공유 링크나 아카이브 링크를 입력해 주세요.", "error"); return; }
+      setStatus("제목과 썸네일을 가져오는 중입니다...");
+      try {
+        const meta = await fetchMeta(url);
+        if (!refs.entryTitle.value.trim()) refs.entryTitle.value = meta.title || "";
+        if (!refs.entryThumb.value.trim()) refs.entryThumb.value = meta.thumb || "";
+        if (!refs.entryNote.value.trim() && meta.description) refs.entryNote.value = meta.description;
+        previewEntry();
+        setStatus("메타데이터를 반영했습니다.", "success");
+      } catch (error) {
+        setStatus(error.message || "메타데이터를 가져오지 못했습니다.", "error");
+      }
+    }
+
+    function saveEntry() {
+      const shareUrl = refs.shareUrl.value.trim();
+      const archiveUrl = refs.archiveUrl.value.trim();
+      if (!shareUrl && !archiveUrl) { setStatus("공유 링크나 아카이브 링크 중 하나는 필요합니다.", "error"); return; }
+      if (!refs.entryDate.value) { setStatus("날짜를 입력해 주세요.", "error"); return; }
+      const entry = normalize({
+        title: refs.entryTitle.value.trim(),
+        shareUrl,
+        archiveUrl,
+        date: refs.entryDate.value,
+        thumb: refs.entryThumb.value.trim(),
+        note: refs.entryNote.value.trim(),
+        source: "local",
+        createdAt: Date.now()
+      }, "local");
+      state.entries.unshift(entry);
+      state.entries.sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, "ko"));
+      persist();
+      closeModal();
+      render();
+      toast("새 링크가 최신 날짜 섹션에 추가되었습니다.");
+    }
+
+    function openDetail(id) {
+      const entry = state.entries.find(item => item.id === id);
+      if (!entry) return;
+      refs.detailTitle.textContent = entry.title;
+      refs.detailMedia.innerHTML = entry.thumb ? `<img class="media" src="${esc(entry.thumb)}" alt="${esc(entry.title)}" />` : `<div class="thumb-fallback">${esc(entry.domain)}</div>`;
+      refs.detailBadges.innerHTML = `<span class="badge type-${typeOf(entry)}">${esc(typeLabel(typeOf(entry)))}</span><span class="badge">${entry.source === "local" ? "직접 추가" : "CSV 시드"}</span>`;
+      refs.detailNote.textContent = entry.note || "메모는 아직 없습니다. 링크 보관 중심으로 저장된 항목입니다.";
+      refs.detailLinks.innerHTML = `${entry.shareUrl ? `<a class="link-btn" href="${esc(entry.shareUrl)}" target="_blank" rel="noreferrer">공유 링크 열기</a>` : ""}${entry.archiveUrl ? `<a class="link-btn primary" href="${esc(entry.archiveUrl)}" target="_blank" rel="noreferrer">아카이브 열기</a>` : ""}`;
+      refs.detailDate.textContent = formatDate(entry.date);
+      refs.detailDomain.textContent = entry.domain;
+      refs.detailShare.textContent = entry.shareUrl || "없음";
+      refs.detailArchive.textContent = entry.archiveUrl || "없음";
+      refs.detailBg.classList.add("open");
+    }
+
+    function bind() {
+      refs.searchInput.addEventListener("input", e => { state.search = e.target.value; render(); });
+      document.getElementById("openModalBtn").onclick = openModal;
+      document.getElementById("closeModalBtn").onclick = closeModal;
+      document.getElementById("cancelModalBtn").onclick = closeModal;
+      document.getElementById("saveEntryBtn").onclick = saveEntry;
+      document.getElementById("fetchMetaBtn").onclick = hydrateMeta;
+      document.getElementById("closeDetailBtn").onclick = closeDetail;
+      refs.modalBg.onclick = e => { if (e.target === refs.modalBg) closeModal(); };
+      refs.detailBg.onclick = e => { if (e.target === refs.detailBg) closeDetail(); };
+      [refs.shareUrl, refs.archiveUrl].forEach(input => input.addEventListener("input", () => {
+        previewEntry();
+        clearTimeout(state.timer);
+        state.timer = setTimeout(() => {
+          const url = refs.shareUrl.value.trim() || refs.archiveUrl.value.trim();
+          if (url && isUrl(url)) hydrateMeta();
+        }, 700);
+      }));
+      [refs.entryTitle, refs.entryDate, refs.entryThumb, refs.entryNote].forEach(input => input.addEventListener("input", previewEntry));
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+          if (refs.detailBg.classList.contains("open")) closeDetail();
+          if (refs.modalBg.classList.contains("open")) closeModal();
+        }
+        if (e.key.toLowerCase() === "n" && !e.ctrlKey && !e.metaKey) {
+          const tag = document.activeElement?.tagName;
+          if (tag !== "INPUT" && tag !== "TEXTAREA") { e.preventDefault(); openModal(); }
+        }
+      });
+    }
+
+    loadEntries();
+    bind();
+    resetForm();
+    render();
+  </script>
+</body>
+</html>
