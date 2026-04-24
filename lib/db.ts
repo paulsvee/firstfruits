@@ -20,18 +20,20 @@ function parseKoreanDate(v: string): string {
 
 const SEED_ROWS = [
   { title: "Planet Earth II — Official Trailer", shareUrl: "https://youtu.be/c8aFcHFu8QM", archive: "https://youtu.be/c8aFcHFu8QM", date: "2016-11-06", category: "" },
-  { title: "Blue Planet II — Official Trailer (BBC)", shareUrl: "https://youtu.be/HjKPaKany-8", archive: "https://youtu.be/HjKPaKany-8", date: "2017-10-29", category: "" },
-  { title: "Our Planet — Official Trailer (Netflix)", shareUrl: "https://youtu.be/aETNYyrqKoE", archive: "https://youtu.be/aETNYyrqKoE", date: "2019-04-05", category: "" },
   { title: "Cosmos: A Spacetime Odyssey — Trailer", shareUrl: "https://youtu.be/Ln8UwPd1z20", archive: "https://youtu.be/Ln8UwPd1z20", date: "2014-03-09", category: "" },
-  { title: "David Attenborough: A Life on Our Planet", shareUrl: "https://youtu.be/64R2MYUt394", archive: "https://youtu.be/64R2MYUt394", date: "2020-10-04", category: "" },
+  { title: "Icarus — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qXoRdSTrR-4", archive: "https://www.youtube.com/watch?v=qXoRdSTrR-4", date: "2017-08-04", category: "" },
   { title: "Free Solo — Official Trailer (National Geographic)", shareUrl: "https://youtu.be/urRVZ4SW7WU", archive: "https://youtu.be/urRVZ4SW7WU", date: "2018-09-28", category: "" },
+  { title: "David Attenborough: A Life on Our Planet — Trailer", shareUrl: "https://youtu.be/64R2MYUt394", archive: "https://youtu.be/64R2MYUt394", date: "2020-10-04", category: "" },
+  { title: "My Octopus Teacher — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3s0LTDhqe5A", archive: "https://www.youtube.com/watch?v=3s0LTDhqe5A", date: "2020-09-07", category: "" },
+  { title: "The Last Dance — Official Trailer (Netflix/ESPN)", shareUrl: "https://www.youtube.com/watch?v=U2uAYhLIqL0", archive: "https://www.youtube.com/watch?v=U2uAYhLIqL0", date: "2020-04-19", category: "" },
   { title: "The Social Dilemma — Official Trailer (Netflix)", shareUrl: "https://youtu.be/uaaC57tcci0", archive: "https://youtu.be/uaaC57tcci0", date: "2020-09-09", category: "" },
-  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://youtu.be/krfcq5pF8u8", archive: "https://youtu.be/krfcq5pF8u8", date: "2016-10-07", category: "" },
   { title: "Seaspiracy — Official Trailer (Netflix)", shareUrl: "https://youtu.be/1Q5CXN7soQg", archive: "https://youtu.be/1Q5CXN7soQg", date: "2021-03-24", category: "" },
+  { title: "Summer of Soul — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=1-siC9cugqA", archive: "https://www.youtube.com/watch?v=1-siC9cugqA", date: "2021-07-02", category: "" },
+  { title: "Flee — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=2gOdc1mgK-o", archive: "https://www.youtube.com/watch?v=2gOdc1mgK-o", date: "2021-12-03", category: "" },
+  { title: "Navalny — Official Trailer (2022)", shareUrl: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", archive: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", date: "2022-04-24", category: "" },
   { title: "Won't You Be My Neighbor? — Trailer", shareUrl: "https://youtu.be/FhwktRDG_aQ", archive: "https://youtu.be/FhwktRDG_aQ", date: "2018-06-08", category: "" },
-  { title: "March of the Penguins — Trailer", shareUrl: "https://youtu.be/CGH7YBxhVHE", archive: "https://youtu.be/CGH7YBxhVHE", date: "2005-06-24", category: "" },
+  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://youtu.be/krfcq5pF8u8", archive: "https://youtu.be/krfcq5pF8u8", date: "2016-10-07", category: "" },
   { title: "Jiro Dreams of Sushi — Trailer", shareUrl: "https://youtu.be/M-aGPniFvS0", archive: "https://youtu.be/M-aGPniFvS0", date: "2012-03-09", category: "" },
-  { title: "Man on Wire — Trailer", shareUrl: "https://youtu.be/xujFMdg8mAc", archive: "https://youtu.be/xujFMdg8mAc", date: "2008-08-01", category: "" },
 ];
 
 function youtubeId(url: string): string {
