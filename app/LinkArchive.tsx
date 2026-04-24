@@ -87,14 +87,13 @@ function formatDate(v: string): string {
   return new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "long", day: "numeric" }).format(new Date(`${v}T00:00:00`));
 }
 
-function formatMonth(v: string): string {
-  const [y, m] = v.split("-");
-  return `${y}년 ${Number(m)}월`;
+function formatYear(v: string): string {
+  return `${v}년`;
 }
 
-function groupByMonth(links: Link[]): Record<string, Link[]> {
+function groupByYear(links: Link[]): Record<string, Link[]> {
   return links.reduce<Record<string, Link[]>>((acc, link) => {
-    const key = link.date.slice(0, 7);
+    const key = link.date.slice(0, 4);
     (acc[key] ||= []).push(link);
     return acc;
   }, {});
@@ -464,7 +463,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
   const filtered = links.filter((link) => {
     const q = search.trim().toLowerCase();
     const hay = [link.title, link.note, domainOf(link), link.shareUrl, link.archiveUrl].join(" ").toLowerCase();
-    const m = link.date.slice(0, 7);
+    const m = link.date.slice(0, 4);
     const matchSearch = !q || hay.includes(q);
     const matchFilter =
       filter === "all" ||
@@ -482,7 +481,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
     return matchSearch && matchFilter && matchMonth && matchCategory;
   }).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, "ko"));
 
-  const months = Array.from(new Set(links.map(l => l.date.slice(0, 7)))).sort((a, b) => b.localeCompare(a));
+  const months = Array.from(new Set(links.map(l => l.date.slice(0, 4)))).sort((a, b) => b.localeCompare(a));
   const filterItems: [string, string, number][] = [
     ["all", "전체 링크", links.length],
     ["both", "공유 + 아카이브", links.filter(l => typeOf(l) === "both").length],
@@ -562,7 +561,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
   }
 
   const previewThumb = entryThumb || youtubeThumb(shareUrl) || youtubeThumb(archiveUrl);
-  const grouped = groupByMonth(filtered);
+  const grouped = groupByYear(filtered);
   const sortedMonths = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
 
   return (
@@ -615,7 +614,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
               <div className="stats">
                 <div className="stat"><strong>{links.filter(l => l.shareUrl).length}</strong><span>공유 링크 있음</span></div>
                 <div className="stat"><strong>{links.filter(l => l.archiveUrl).length}</strong><span>아카이브 있음</span></div>
-                <div className="stat"><strong>{months.length}</strong><span>월 단위 정리</span></div>
+                <div className="stat"><strong>{months.length}</strong><span>연도 단위 정리</span></div>
                 <div className="stat"><strong>{links.filter(l => l.source === "local").length}</strong><span>직접 추가한 항목</span></div>
               </div>
             </div>
@@ -632,14 +631,14 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
             </div>
 
             <div className="box">
-              <div className="label">Months</div>
+              <div className="label">Years</div>
               <div className="month-list">
                 <button className={`month${month === "all" ? " active" : ""}`} onClick={() => setMonth("all")}>
-                  <span>전체 월 보기</span><span>{links.length}</span>
+                  <span>전체 연도 보기</span><span>{links.length}</span>
                 </button>
                 {months.map(m => (
                   <button key={m} className={`month${month === m ? " active" : ""}`} onClick={() => setMonth(m)}>
-                    <span>{formatMonth(m)}</span><span>{groupByMonth(links)[m]?.length ?? 0}</span>
+                    <span>{formatYear(m)}</span><span>{groupByYear(links)[m]?.length ?? 0}</span>
                   </button>
                 ))}
               </div>
@@ -674,7 +673,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
               <div className="section-head">
                 <div>
                   <h3>Archive Timeline</h3>
-                  <p>{month === "all" ? "전체 월" : formatMonth(month)} 기준 {filtered.length}개를 최신 날짜 순으로 보여주고 있습니다.</p>
+                  <p>{month === "all" ? "전체 연도" : formatYear(month)} 기준 {filtered.length}개를 최신 날짜 순으로 보여주고 있습니다.</p>
                 </div>
               </div>
 
@@ -687,7 +686,7 @@ export default function LinkArchive({ initialLinks }: { initialLinks: Link[] }) 
                 sortedMonths.map(m => (
                   <section key={m} className="month-section">
                     <div className="month-head">
-                      <strong>{formatMonth(m)}</strong>
+                      <strong>{formatYear(m)}</strong>
                       <span>{grouped[m].length} items</span>
                     </div>
                     <div className="grid">

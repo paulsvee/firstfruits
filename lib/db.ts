@@ -19,21 +19,53 @@ function parseKoreanDate(v: string): string {
 }
 
 const SEED_ROWS = [
-  { title: "Planet Earth II — Official Trailer", shareUrl: "https://youtu.be/c8aFcHFu8QM", archive: "https://youtu.be/c8aFcHFu8QM", date: "2016-11-06", category: "" },
-  { title: "Cosmos: A Spacetime Odyssey — Trailer", shareUrl: "https://youtu.be/Ln8UwPd1z20", archive: "https://youtu.be/Ln8UwPd1z20", date: "2014-03-09", category: "" },
-  { title: "Icarus — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qXoRdSTrR-4", archive: "https://www.youtube.com/watch?v=qXoRdSTrR-4", date: "2017-08-04", category: "" },
-  { title: "Free Solo — Official Trailer (National Geographic)", shareUrl: "https://youtu.be/urRVZ4SW7WU", archive: "https://youtu.be/urRVZ4SW7WU", date: "2018-09-28", category: "" },
-  { title: "David Attenborough: A Life on Our Planet — Trailer", shareUrl: "https://youtu.be/64R2MYUt394", archive: "https://youtu.be/64R2MYUt394", date: "2020-10-04", category: "" },
-  { title: "My Octopus Teacher — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3s0LTDhqe5A", archive: "https://www.youtube.com/watch?v=3s0LTDhqe5A", date: "2020-09-07", category: "" },
-  { title: "The Last Dance — Official Trailer (Netflix/ESPN)", shareUrl: "https://www.youtube.com/watch?v=U2uAYhLIqL0", archive: "https://www.youtube.com/watch?v=U2uAYhLIqL0", date: "2020-04-19", category: "" },
-  { title: "The Social Dilemma — Official Trailer (Netflix)", shareUrl: "https://youtu.be/uaaC57tcci0", archive: "https://youtu.be/uaaC57tcci0", date: "2020-09-09", category: "" },
-  { title: "Seaspiracy — Official Trailer (Netflix)", shareUrl: "https://youtu.be/1Q5CXN7soQg", archive: "https://youtu.be/1Q5CXN7soQg", date: "2021-03-24", category: "" },
-  { title: "Summer of Soul — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=1-siC9cugqA", archive: "https://www.youtube.com/watch?v=1-siC9cugqA", date: "2021-07-02", category: "" },
-  { title: "Flee — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=2gOdc1mgK-o", archive: "https://www.youtube.com/watch?v=2gOdc1mgK-o", date: "2021-12-03", category: "" },
+  // ── 2022 ───────────────────────────────────────────────────────────────────
+  { title: "Bad Vegan: Fame. Fraud. Fugitives. — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=4nTf7iViYUI", archive: "https://www.youtube.com/watch?v=4nTf7iViYUI", date: "2022-03-16", category: "" },
+  { title: "Return to Space — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=sIME4sLR4-8", archive: "https://www.youtube.com/watch?v=sIME4sLR4-8", date: "2022-04-07", category: "" },
   { title: "Navalny — Official Trailer (2022)", shareUrl: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", archive: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", date: "2022-04-24", category: "" },
-  { title: "Won't You Be My Neighbor? — Trailer", shareUrl: "https://youtu.be/FhwktRDG_aQ", archive: "https://youtu.be/FhwktRDG_aQ", date: "2018-06-08", category: "" },
-  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://youtu.be/krfcq5pF8u8", archive: "https://youtu.be/krfcq5pF8u8", date: "2016-10-07", category: "" },
-  { title: "Jiro Dreams of Sushi — Trailer", shareUrl: "https://youtu.be/M-aGPniFvS0", archive: "https://youtu.be/M-aGPniFvS0", date: "2012-03-09", category: "" },
+  { title: "Fire of Love — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=pH6Fn_RA21M", archive: "https://www.youtube.com/watch?v=pH6Fn_RA21M", date: "2022-07-06", category: "" },
+  { title: "All That Breathes — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=GoTlULspDyY", archive: "https://www.youtube.com/watch?v=GoTlULspDyY", date: "2022-07-22", category: "" },
+  // ── 2021 ───────────────────────────────────────────────────────────────────
+  { title: "Seaspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=1Q5CXN7soQg", archive: "https://www.youtube.com/watch?v=1Q5CXN7soQg", date: "2021-03-24", category: "" },
+  { title: "Summer of Soul — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=1-siC9cugqA", archive: "https://www.youtube.com/watch?v=1-siC9cugqA", date: "2021-07-02", category: "" },
+  { title: "Roadrunner: A Film About Anthony Bourdain — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=qbgKJPDo0tU", archive: "https://www.youtube.com/watch?v=qbgKJPDo0tU", date: "2021-07-16", category: "" },
+  { title: "Val — Official Trailer (Prime Video)", shareUrl: "https://www.youtube.com/watch?v=YqNnhgEyQCU", archive: "https://www.youtube.com/watch?v=YqNnhgEyQCU", date: "2021-07-23", category: "" },
+  { title: "Flee — Official Trailer (2021)", shareUrl: "https://www.youtube.com/watch?v=2gOdc1mgK-o", archive: "https://www.youtube.com/watch?v=2gOdc1mgK-o", date: "2021-12-03", category: "" },
+  // ── 2020 ───────────────────────────────────────────────────────────────────
+  { title: "Crip Camp: A Disability Revolution — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=XRrIs22plz0", archive: "https://www.youtube.com/watch?v=XRrIs22plz0", date: "2020-03-25", category: "" },
+  { title: "The Last Dance — Official Trailer (Netflix/ESPN)", shareUrl: "https://www.youtube.com/watch?v=U2uAYhLIqL0", archive: "https://www.youtube.com/watch?v=U2uAYhLIqL0", date: "2020-04-19", category: "" },
+  { title: "My Octopus Teacher — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3s0LTDhqe5A", archive: "https://www.youtube.com/watch?v=3s0LTDhqe5A", date: "2020-09-07", category: "" },
+  { title: "The Social Dilemma — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=uaaC57tcci0", archive: "https://www.youtube.com/watch?v=uaaC57tcci0", date: "2020-09-09", category: "" },
+  { title: "Dick Johnson Is Dead — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=wfTmT6C5DnM", archive: "https://www.youtube.com/watch?v=wfTmT6C5DnM", date: "2020-10-02", category: "" },
+  { title: "David Attenborough: A Life on Our Planet — Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=64R2MYUt394", archive: "https://www.youtube.com/watch?v=64R2MYUt394", date: "2020-10-04", category: "" },
+  // ── 2019 ───────────────────────────────────────────────────────────────────
+  { title: "Apollo 11 — Official Trailer (2019)", shareUrl: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", archive: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", date: "2019-03-08", category: "" },
+  { title: "American Factory — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", archive: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", date: "2019-08-21", category: "" },
+  { title: "For Sama — Official Trailer (PBS)", shareUrl: "https://www.youtube.com/watch?v=vsvBqtg2RM0", archive: "https://www.youtube.com/watch?v=vsvBqtg2RM0", date: "2019-11-07", category: "" },
+  // ── 2018 ───────────────────────────────────────────────────────────────────
+  { title: "RBG — Official Trailer (2018)", shareUrl: "https://www.youtube.com/watch?v=biIRlcQqmOc", archive: "https://www.youtube.com/watch?v=biIRlcQqmOc", date: "2018-05-04", category: "" },
+  { title: "Won't You Be My Neighbor? — Official Trailer (2018)", shareUrl: "https://www.youtube.com/watch?v=FhwktRDG_aQ", archive: "https://www.youtube.com/watch?v=FhwktRDG_aQ", date: "2018-06-08", category: "" },
+  { title: "Three Identical Strangers — Official Trailer (2018)", shareUrl: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", archive: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", date: "2018-06-29", category: "" },
+  { title: "Free Solo — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=urRVZ4SW7WU", archive: "https://www.youtube.com/watch?v=urRVZ4SW7WU", date: "2018-09-28", category: "" },
+  // ── 2017 ───────────────────────────────────────────────────────────────────
+  { title: "I Am Not Your Negro — Official Trailer (2017)", shareUrl: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", archive: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", date: "2017-02-03", category: "" },
+  { title: "Icarus — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qXoRdSTrR-4", archive: "https://www.youtube.com/watch?v=qXoRdSTrR-4", date: "2017-08-04", category: "" },
+  // ── 2016 ───────────────────────────────────────────────────────────────────
+  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=krfcq5pF8u8", archive: "https://www.youtube.com/watch?v=krfcq5pF8u8", date: "2016-10-07", category: "" },
+  { title: "Planet Earth II — Official Trailer (BBC)", shareUrl: "https://www.youtube.com/watch?v=c8aFcHFu8QM", archive: "https://www.youtube.com/watch?v=c8aFcHFu8QM", date: "2016-11-06", category: "" },
+  // ── 2014 ───────────────────────────────────────────────────────────────────
+  { title: "Cosmos: A Spacetime Odyssey — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=Ln8UwPd1z20", archive: "https://www.youtube.com/watch?v=Ln8UwPd1z20", date: "2014-03-09", category: "" },
+  { title: "Citizenfour — Official Trailer (2014)", shareUrl: "https://www.youtube.com/watch?v=XiGwAvd5mvM", archive: "https://www.youtube.com/watch?v=XiGwAvd5mvM", date: "2014-10-10", category: "" },
+  // ── 2013 ───────────────────────────────────────────────────────────────────
+  { title: "Blackfish — Official Trailer (2013)", shareUrl: "https://www.youtube.com/watch?v=G93beiYiE74", archive: "https://www.youtube.com/watch?v=G93beiYiE74", date: "2013-07-19", category: "" },
+  // ── 2012 ───────────────────────────────────────────────────────────────────
+  { title: "Jiro Dreams of Sushi — Official Trailer (2012)", shareUrl: "https://www.youtube.com/watch?v=M-aGPniFvS0", archive: "https://www.youtube.com/watch?v=M-aGPniFvS0", date: "2012-03-09", category: "" },
+  // ── 2011 ───────────────────────────────────────────────────────────────────
+  { title: "Senna — Official Trailer (2011)", shareUrl: "https://www.youtube.com/watch?v=sfosF-ZAbR4", archive: "https://www.youtube.com/watch?v=sfosF-ZAbR4", date: "2011-06-03", category: "" },
+  // ── 2010 ───────────────────────────────────────────────────────────────────
+  { title: "Exit Through the Gift Shop — Official Trailer (Banksy)", shareUrl: "https://www.youtube.com/watch?v=oHJBdDSTbLw", archive: "https://www.youtube.com/watch?v=oHJBdDSTbLw", date: "2010-04-16", category: "" },
+  // ── 2005 ───────────────────────────────────────────────────────────────────
+  { title: "Grizzly Man — Official Trailer (Werner Herzog)", shareUrl: "https://www.youtube.com/watch?v=uWA7GtDmNFU", archive: "https://www.youtube.com/watch?v=uWA7GtDmNFU", date: "2005-08-12", category: "" },
 ];
 
 function youtubeId(url: string): string {
