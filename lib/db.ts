@@ -63,7 +63,7 @@ function seedIfEmpty(database: Database.Database) {
 
   const insertMany = database.transaction(() => {
     for (const row of SEED_ROWS) {
-      const date = parseKoreanDate(row.date);
+      const date = parseKoreanDate(row.date) || row.date;
       const thumb = youtubeThumb(row.shareUrl) || youtubeThumb(row.archive);
       insert.run(uid(), row.title, row.shareUrl, row.archive, date, thumb, "", "seed", Date.now());
     }
