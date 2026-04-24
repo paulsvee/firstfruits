@@ -2,7 +2,10 @@ import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
 
-const DB_PATH = path.join(process.cwd(), "data", "firstfruits.sqlite");
+// Vercel Lambda filesystem is read-only at process.cwd(); use /tmp for writable storage.
+const DB_PATH = process.env.VERCEL
+  ? path.join("/tmp", "firstfruits.sqlite")
+  : path.join(process.cwd(), "data", "firstfruits.sqlite");
 
 let db: Database.Database | null = null;
 
