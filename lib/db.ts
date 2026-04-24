@@ -19,8 +19,14 @@ function parseKoreanDate(v: string): string {
 }
 
 const SEED_ROWS = [
+  // ── 2026 ───────────────────────────────────────────────────────────────────
+  { title: "Louis Theroux: Inside the Manosphere — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Ms23FeJWvKU", archive: "https://www.youtube.com/watch?v=Ms23FeJWvKU", date: "2026-03-11", category: "social" },
+  { title: "Ronaldinho: The One and Only — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8BJc-L19h0E", archive: "https://www.youtube.com/watch?v=8BJc-L19h0E", date: "2026-04-16", category: "sports" },
   // ── 2024 ───────────────────────────────────────────────────────────────────
   { title: "Skywalkers: A Love Story — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8jA1KpESAqk", archive: "https://www.youtube.com/watch?v=8jA1KpESAqk", date: "2024-07-19", category: "sports" },
+  { title: "Mountain Queen: The Summits of Lhakpa Sherpa — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=0yz5F9WtmsI", archive: "https://www.youtube.com/watch?v=0yz5F9WtmsI", date: "2024-07-31", category: "sports" },
+  { title: "Daughters — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=SMTgDRqfLPE", archive: "https://www.youtube.com/watch?v=SMTgDRqfLPE", date: "2024-08-14", category: "social" },
+  { title: "Will & Harper — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=PRZ1ELeGepo", archive: "https://www.youtube.com/watch?v=PRZ1ELeGepo", date: "2024-09-27", category: "people" },
   { title: "Super/Man: The Christopher Reeve Story — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=gX-B3HMlMfY", archive: "https://www.youtube.com/watch?v=gX-B3HMlMfY", date: "2024-10-11", category: "people" },
   { title: "Martha — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=6blC6bsgZmc", archive: "https://www.youtube.com/watch?v=6blC6bsgZmc", date: "2024-10-30", category: "people" },
   // ── 2023 ───────────────────────────────────────────────────────────────────
