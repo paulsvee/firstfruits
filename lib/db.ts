@@ -19,108 +19,113 @@ function parseKoreanDate(v: string): string {
 }
 
 const SEED_ROWS = [
-  // ── 2026 ───────────────────────────────────────────────────────────────────
+  // ── 2026년 4월 (3) ──────────────────────────────────────────────────────────
+  { title: "Ronaldinho: The One and Only — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8BJc-L19h0E", archive: "https://www.youtube.com/watch?v=8BJc-L19h0E", date: "2026-04-16", category: "sports" },
+  { title: "The Truth and Tragedy of Moriah Wilson — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=n0zKkQ9eUfY", archive: "https://www.youtube.com/watch?v=n0zKkQ9eUfY", date: "2026-04-03", category: "crime" },
+  { title: "A Gorilla Story: Told by David Attenborough — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=u6Qs4W0uwBw", archive: "https://www.youtube.com/watch?v=u6Qs4W0uwBw", date: "2026-04-17", category: "nature" },
+  // ── 2026년 3월 (4) ──────────────────────────────────────────────────────────
   { title: "The Dinosaurs — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=y4ZBSzYUTL0", archive: "https://www.youtube.com/watch?v=y4ZBSzYUTL0", date: "2026-03-06", category: "nature" },
   { title: "Fukushima: A Nuclear Nightmare — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=aKTmUdQQoZI", archive: "https://www.youtube.com/watch?v=aKTmUdQQoZI", date: "2026-03-10", category: "science" },
   { title: "Louis Theroux: Inside the Manosphere — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Ms23FeJWvKU", archive: "https://www.youtube.com/watch?v=Ms23FeJWvKU", date: "2026-03-11", category: "social" },
   { title: "Dynasty: The Murdochs — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=a4BaDLZjE2c", archive: "https://www.youtube.com/watch?v=a4BaDLZjE2c", date: "2026-03-13", category: "people" },
-  { title: "Ronaldinho: The One and Only — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8BJc-L19h0E", archive: "https://www.youtube.com/watch?v=8BJc-L19h0E", date: "2026-04-16", category: "sports" },
-  { title: "The Truth and Tragedy of Moriah Wilson — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=n0zKkQ9eUfY", archive: "https://www.youtube.com/watch?v=n0zKkQ9eUfY", date: "2026-04-03", category: "crime" },
-  { title: "A Gorilla Story: Told by David Attenborough — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=u6Qs4W0uwBw", archive: "https://www.youtube.com/watch?v=u6Qs4W0uwBw", date: "2026-04-17", category: "nature" },
-  // ── 2025 ───────────────────────────────────────────────────────────────────
+  // ── 2025년 6월 (3) ──────────────────────────────────────────────────────────
+  { title: "Pee-wee as Himself — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=jVx74C-RGDw", archive: "https://www.youtube.com/watch?v=jVx74C-RGDw", date: "2025-06-01", category: "people" },
   { title: "Titan: The OceanGate Disaster — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=CplcmrxZMyo", archive: "https://www.youtube.com/watch?v=CplcmrxZMyo", date: "2025-06-11", category: "science" },
-  { title: "Pee-wee as Himself — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=jVx74C-RGDw", archive: "https://www.youtube.com/watch?v=jVx74C-RGDw", date: "2025-05-23", category: "people" },
-  { title: "The Perfect Neighbor — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=fNp85HGJtoo", archive: "https://www.youtube.com/watch?v=fNp85HGJtoo", date: "2025-10-17", category: "crime" },
-  // ── 2024 ───────────────────────────────────────────────────────────────────
-  { title: "American Nightmare — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Yonx7CyoK3k", archive: "https://www.youtube.com/watch?v=Yonx7CyoK3k", date: "2024-01-17", category: "crime" },
-  { title: "Lover, Stalker, Killer — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=46RuZLu6dso", archive: "https://www.youtube.com/watch?v=46RuZLu6dso", date: "2024-02-09", category: "crime" },
-  { title: "Einstein and the Bomb — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=2t9RwElQGhg", archive: "https://www.youtube.com/watch?v=2t9RwElQGhg", date: "2024-03-22", category: "science" },
+  { title: "The Perfect Neighbor — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=fNp85HGJtoo", archive: "https://www.youtube.com/watch?v=fNp85HGJtoo", date: "2025-06-17", category: "crime" },
+  // ── 2024년 10월 (4) ─────────────────────────────────────────────────────────
+  { title: "Mr. McMahon — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=fwKm7WM_P8E", archive: "https://www.youtube.com/watch?v=fwKm7WM_P8E", date: "2024-10-01", category: "people" },
+  { title: "Super/Man: The Christopher Reeve Story — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=gX-B3HMlMfY", archive: "https://www.youtube.com/watch?v=gX-B3HMlMfY", date: "2024-10-11", category: "people" },
+  { title: "Martha — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=6blC6bsgZmc", archive: "https://www.youtube.com/watch?v=6blC6bsgZmc", date: "2024-10-20", category: "people" },
+  { title: "Buy Now! The Shopping Conspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=OVfZw_eqJW8", archive: "https://www.youtube.com/watch?v=OVfZw_eqJW8", date: "2024-10-28", category: "social" },
+  // ── 2024년 7월 (4) ──────────────────────────────────────────────────────────
   { title: "Sprint — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qPaEwvY_rtg", archive: "https://www.youtube.com/watch?v=qPaEwvY_rtg", date: "2024-07-02", category: "sports" },
   { title: "Skywalkers: A Love Story — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8jA1KpESAqk", archive: "https://www.youtube.com/watch?v=8jA1KpESAqk", date: "2024-07-19", category: "sports" },
-  { title: "Mountain Queen: The Summits of Lhakpa Sherpa — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=0yz5F9WtmsI", archive: "https://www.youtube.com/watch?v=0yz5F9WtmsI", date: "2024-07-31", category: "sports" },
-  { title: "Daughters — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=SMTgDRqfLPE", archive: "https://www.youtube.com/watch?v=SMTgDRqfLPE", date: "2024-08-14", category: "social" },
-  { title: "Will & Harper — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=PRZ1ELeGepo", archive: "https://www.youtube.com/watch?v=PRZ1ELeGepo", date: "2024-09-27", category: "people" },
-  { title: "Mr. McMahon — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=fwKm7WM_P8E", archive: "https://www.youtube.com/watch?v=fwKm7WM_P8E", date: "2024-09-25", category: "people" },
-  { title: "Super/Man: The Christopher Reeve Story — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=gX-B3HMlMfY", archive: "https://www.youtube.com/watch?v=gX-B3HMlMfY", date: "2024-10-11", category: "people" },
-  { title: "Martha — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=6blC6bsgZmc", archive: "https://www.youtube.com/watch?v=6blC6bsgZmc", date: "2024-10-30", category: "people" },
-  { title: "Buy Now! The Shopping Conspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=OVfZw_eqJW8", archive: "https://www.youtube.com/watch?v=OVfZw_eqJW8", date: "2024-11-20", category: "social" },
-  // ── 2023 ───────────────────────────────────────────────────────────────────
-  { title: "Pamela, a love story — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3SBJB8r8fVQ", archive: "https://www.youtube.com/watch?v=3SBJB8r8fVQ", date: "2023-01-31", category: "people" },
-  { title: "Arnold — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=x2AEI26LBpA", archive: "https://www.youtube.com/watch?v=x2AEI26LBpA", date: "2023-06-07", category: "people" },
-  { title: "Wham! — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=7fWzGF0tgcc", archive: "https://www.youtube.com/watch?v=7fWzGF0tgcc", date: "2023-07-05", category: "music" },
-  { title: "The Deepest Breath — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=MzH6BI6P4Uo", archive: "https://www.youtube.com/watch?v=MzH6BI6P4Uo", date: "2023-07-19", category: "sports" },
-  { title: "Unknown: Cave of Bones — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=D85B4rVcFtk", archive: "https://www.youtube.com/watch?v=D85B4rVcFtk", date: "2023-07-17", category: "science" },
-  { title: "Beckham — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=nUVNbJMWi_c", archive: "https://www.youtube.com/watch?v=nUVNbJMWi_c", date: "2023-10-04", category: "sports" },
+  { title: "Mountain Queen: The Summits of Lhakpa Sherpa — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=0yz5F9WtmsI", archive: "https://www.youtube.com/watch?v=0yz5F9WtmsI", date: "2024-07-25", category: "sports" },
+  { title: "Will & Harper — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=PRZ1ELeGepo", archive: "https://www.youtube.com/watch?v=PRZ1ELeGepo", date: "2024-07-27", category: "people" },
+  // ── 2024년 2월 (3) ──────────────────────────────────────────────────────────
+  { title: "American Nightmare — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Yonx7CyoK3k", archive: "https://www.youtube.com/watch?v=Yonx7CyoK3k", date: "2024-02-01", category: "crime" },
+  { title: "Lover, Stalker, Killer — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=46RuZLu6dso", archive: "https://www.youtube.com/watch?v=46RuZLu6dso", date: "2024-02-09", category: "crime" },
+  { title: "Einstein and the Bomb — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=2t9RwElQGhg", archive: "https://www.youtube.com/watch?v=2t9RwElQGhg", date: "2024-02-16", category: "science" },
+  // ── 2023년 11월 (4) ─────────────────────────────────────────────────────────
   { title: "Sly — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=_FMulgkArnw", archive: "https://www.youtube.com/watch?v=_FMulgkArnw", date: "2023-11-03", category: "people" },
   { title: "Robbie Williams — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=FMXxYPvrJs4", archive: "https://www.youtube.com/watch?v=FMXxYPvrJs4", date: "2023-11-08", category: "music" },
+  { title: "Daughters — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=SMTgDRqfLPE", archive: "https://www.youtube.com/watch?v=SMTgDRqfLPE", date: "2023-11-14", category: "social" },
   { title: "American Symphony — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=wKSMsdq8ONs", archive: "https://www.youtube.com/watch?v=wKSMsdq8ONs", date: "2023-11-29", category: "music" },
-  // ── 2022 ───────────────────────────────────────────────────────────────────
-  { title: "The Puppet Master: Hunting the Ultimate Conman — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=vsVjVu31KL0", archive: "https://www.youtube.com/watch?v=vsVjVu31KL0", date: "2022-01-18", category: "crime" },
-  { title: "The Tinder Swindler — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Hb7AZcC88lg", archive: "https://www.youtube.com/watch?v=Hb7AZcC88lg", date: "2022-02-02", category: "crime" },
-  { title: "Downfall: The Case Against Boeing — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=vt-IJkUbAxY", archive: "https://www.youtube.com/watch?v=vt-IJkUbAxY", date: "2022-02-18", category: "social" },
-  { title: "Bad Vegan: Fame. Fraud. Fugitives. — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=4nTf7iViYUI", archive: "https://www.youtube.com/watch?v=4nTf7iViYUI", date: "2022-03-16", category: "crime" },
-  { title: "Return to Space — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=sIME4sLR4-8", archive: "https://www.youtube.com/watch?v=sIME4sLR4-8", date: "2022-04-07", category: "science" },
-  { title: "Navalny — Official Trailer (2022)", shareUrl: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", archive: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", date: "2022-04-24", category: "social" },
-  { title: "Our Father — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=phQxK5u8IEs", archive: "https://www.youtube.com/watch?v=phQxK5u8IEs", date: "2022-05-11", category: "crime" },
-  { title: "Halftime — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=rpMZOZTqcQw", archive: "https://www.youtube.com/watch?v=rpMZOZTqcQw", date: "2022-06-14", category: "music" },
-  { title: "The Last Movie Stars — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=ESJaz4mFA3E", archive: "https://www.youtube.com/watch?v=ESJaz4mFA3E", date: "2022-06-21", category: "people" },
+  // ── 2023년 7월 (6) ──────────────────────────────────────────────────────────
+  { title: "Pamela, a love story — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3SBJB8r8fVQ", archive: "https://www.youtube.com/watch?v=3SBJB8r8fVQ", date: "2023-07-01", category: "people" },
+  { title: "Arnold — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=x2AEI26LBpA", archive: "https://www.youtube.com/watch?v=x2AEI26LBpA", date: "2023-07-03", category: "people" },
+  { title: "Wham! — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=7fWzGF0tgcc", archive: "https://www.youtube.com/watch?v=7fWzGF0tgcc", date: "2023-07-05", category: "music" },
+  { title: "Unknown: Cave of Bones — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=D85B4rVcFtk", archive: "https://www.youtube.com/watch?v=D85B4rVcFtk", date: "2023-07-17", category: "science" },
+  { title: "The Deepest Breath — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=MzH6BI6P4Uo", archive: "https://www.youtube.com/watch?v=MzH6BI6P4Uo", date: "2023-07-19", category: "sports" },
+  { title: "Beckham — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=nUVNbJMWi_c", archive: "https://www.youtube.com/watch?v=nUVNbJMWi_c", date: "2023-07-25", category: "sports" },
+  // ── 2022년 11월 (5) ─────────────────────────────────────────────────────────
+  { title: "Stutz — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=UKCmefQdplI", archive: "https://www.youtube.com/watch?v=UKCmefQdplI", date: "2022-11-01", category: "people" },
+  { title: "Sr. — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=1qWUUGB7KUs", archive: "https://www.youtube.com/watch?v=1qWUUGB7KUs", date: "2022-11-05", category: "people" },
+  { title: "Halftime — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=rpMZOZTqcQw", archive: "https://www.youtube.com/watch?v=rpMZOZTqcQw", date: "2022-11-10", category: "music" },
+  { title: "Our Father — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=phQxK5u8IEs", archive: "https://www.youtube.com/watch?v=phQxK5u8IEs", date: "2022-11-15", category: "crime" },
+  { title: "The Last Movie Stars — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=ESJaz4mFA3E", archive: "https://www.youtube.com/watch?v=ESJaz4mFA3E", date: "2022-11-21", category: "people" },
+  // ── 2022년 7월 (4) ──────────────────────────────────────────────────────────
   { title: "Fire of Love — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=pH6Fn_RA21M", archive: "https://www.youtube.com/watch?v=pH6Fn_RA21M", date: "2022-07-06", category: "nature" },
-  { title: "All That Breathes — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=GoTlULspDyY", archive: "https://www.youtube.com/watch?v=GoTlULspDyY", date: "2022-07-22", category: "nature" },
-  { title: "Stutz — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=UKCmefQdplI", archive: "https://www.youtube.com/watch?v=UKCmefQdplI", date: "2022-11-14", category: "people" },
-  { title: "Sr. — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=1qWUUGB7KUs", archive: "https://www.youtube.com/watch?v=1qWUUGB7KUs", date: "2022-12-02", category: "people" },
-  // ── 2021 ───────────────────────────────────────────────────────────────────
-  { title: "Night Stalker: The Hunt for a Serial Killer — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Mva2nGveYss", archive: "https://www.youtube.com/watch?v=Mva2nGveYss", date: "2021-01-13", category: "crime" },
-  { title: "Pretend It's a City — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=aPmWHZwyo5g", archive: "https://www.youtube.com/watch?v=aPmWHZwyo5g", date: "2021-01-08", category: "social" },
-  { title: "Allen v. Farrow — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=cKTOj7HnLbo", archive: "https://www.youtube.com/watch?v=cKTOj7HnLbo", date: "2021-02-21", category: "crime" },
-  { title: "Operation Varsity Blues — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=LFHj8e7mU_I", archive: "https://www.youtube.com/watch?v=LFHj8e7mU_I", date: "2021-03-17", category: "social" },
-  { title: "Crack: Cocaine, Corruption & Conspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=RbYdjyxDNtQ", archive: "https://www.youtube.com/watch?v=RbYdjyxDNtQ", date: "2021-03-23", category: "social" },
-  { title: "Seaspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=1Q5CXN7soQg", archive: "https://www.youtube.com/watch?v=1Q5CXN7soQg", date: "2021-03-24", category: "nature" },
-  { title: "LuLaRich — Official Trailer (Prime Video)", shareUrl: "https://www.youtube.com/watch?v=mIkcrQzTr8w", archive: "https://www.youtube.com/watch?v=mIkcrQzTr8w", date: "2021-09-10", category: "social" },
-  { title: "The Rescue — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=_-Kw5kAPSbk", archive: "https://www.youtube.com/watch?v=_-Kw5kAPSbk", date: "2021-10-08", category: "people" },
+  { title: "All That Breathes — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=GoTlULspDyY", archive: "https://www.youtube.com/watch?v=GoTlULspDyY", date: "2022-07-15", category: "nature" },
+  { title: "Navalny — Official Trailer (2022)", shareUrl: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", archive: "https://www.youtube.com/watch?v=ZF_HsKCWEHw", date: "2022-07-22", category: "social" },
+  { title: "Return to Space — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=sIME4sLR4-8", archive: "https://www.youtube.com/watch?v=sIME4sLR4-8", date: "2022-07-28", category: "science" },
+  // ── 2022년 2월 (4) ──────────────────────────────────────────────────────────
+  { title: "The Puppet Master: Hunting the Ultimate Conman — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=vsVjVu31KL0", archive: "https://www.youtube.com/watch?v=vsVjVu31KL0", date: "2022-02-05", category: "crime" },
+  { title: "The Tinder Swindler — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Hb7AZcC88lg", archive: "https://www.youtube.com/watch?v=Hb7AZcC88lg", date: "2022-02-09", category: "crime" },
+  { title: "Downfall: The Case Against Boeing — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=vt-IJkUbAxY", archive: "https://www.youtube.com/watch?v=vt-IJkUbAxY", date: "2022-02-18", category: "social" },
+  { title: "Bad Vegan: Fame. Fraud. Fugitives. — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=4nTf7iViYUI", archive: "https://www.youtube.com/watch?v=4nTf7iViYUI", date: "2022-02-24", category: "crime" },
+  // ── 2021년 11월 (5) ─────────────────────────────────────────────────────────
+  { title: "The Beatles: Get Back — Official Trailer (Disney+)", shareUrl: "https://www.youtube.com/watch?v=Auta2lagtw4", archive: "https://www.youtube.com/watch?v=Auta2lagtw4", date: "2021-11-05", category: "music" },
+  { title: "14 Peaks: Nothing Is Impossible — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8QH5hBOoz08", archive: "https://www.youtube.com/watch?v=8QH5hBOoz08", date: "2021-11-10", category: "sports" },
+  { title: "LuLaRich — Official Trailer (Prime Video)", shareUrl: "https://www.youtube.com/watch?v=mIkcrQzTr8w", archive: "https://www.youtube.com/watch?v=mIkcrQzTr8w", date: "2021-11-15", category: "social" },
+  { title: "The Rescue — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=_-Kw5kAPSbk", archive: "https://www.youtube.com/watch?v=_-Kw5kAPSbk", date: "2021-11-20", category: "people" },
+  { title: "Flee — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=2gOdc1mgK-o", archive: "https://www.youtube.com/watch?v=2gOdc1mgK-o", date: "2021-11-25", category: "social" },
+  // ── 2021년 7월 (3) ──────────────────────────────────────────────────────────
   { title: "Summer of Soul — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=1-siC9cugqA", archive: "https://www.youtube.com/watch?v=1-siC9cugqA", date: "2021-07-02", category: "music" },
   { title: "Roadrunner: A Film About Anthony Bourdain — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=qbgKJPDo0tU", archive: "https://www.youtube.com/watch?v=qbgKJPDo0tU", date: "2021-07-16", category: "people" },
   { title: "Val — Official Trailer (Prime Video)", shareUrl: "https://www.youtube.com/watch?v=YqNnhgEyQCU", archive: "https://www.youtube.com/watch?v=YqNnhgEyQCU", date: "2021-07-23", category: "people" },
-  { title: "The Beatles: Get Back — Official Trailer (Disney+)", shareUrl: "https://www.youtube.com/watch?v=Auta2lagtw4", archive: "https://www.youtube.com/watch?v=Auta2lagtw4", date: "2021-11-25", category: "music" },
-  { title: "14 Peaks: Nothing Is Impossible — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=8QH5hBOoz08", archive: "https://www.youtube.com/watch?v=8QH5hBOoz08", date: "2021-11-29", category: "sports" },
-  { title: "Flee — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=2gOdc1mgK-o", archive: "https://www.youtube.com/watch?v=2gOdc1mgK-o", date: "2021-12-03", category: "social" },
-  // ── 2020 ───────────────────────────────────────────────────────────────────
-  { title: "Tiger King: Murder, Mayhem and Madness — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=acTdxsoa428", archive: "https://www.youtube.com/watch?v=acTdxsoa428", date: "2020-03-20", category: "crime" },
-  { title: "Crip Camp: A Disability Revolution — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=XRrIs22plz0", archive: "https://www.youtube.com/watch?v=XRrIs22plz0", date: "2020-03-25", category: "social" },
-  { title: "The Last Dance — Official Trailer (Netflix/ESPN)", shareUrl: "https://www.youtube.com/watch?v=U2uAYhLIqL0", archive: "https://www.youtube.com/watch?v=U2uAYhLIqL0", date: "2020-04-19", category: "sports" },
+  // ── 2021년 3월 (3) ──────────────────────────────────────────────────────────
+  { title: "Operation Varsity Blues — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=LFHj8e7mU_I", archive: "https://www.youtube.com/watch?v=LFHj8e7mU_I", date: "2021-03-17", category: "social" },
+  { title: "Crack: Cocaine, Corruption & Conspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=RbYdjyxDNtQ", archive: "https://www.youtube.com/watch?v=RbYdjyxDNtQ", date: "2021-03-23", category: "social" },
+  { title: "Seaspiracy — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=1Q5CXN7soQg", archive: "https://www.youtube.com/watch?v=1Q5CXN7soQg", date: "2021-03-24", category: "nature" },
+  // ── 2021년 1월 (3) ──────────────────────────────────────────────────────────
+  { title: "Night Stalker: The Hunt for a Serial Killer — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=Mva2nGveYss", archive: "https://www.youtube.com/watch?v=Mva2nGveYss", date: "2021-01-08", category: "crime" },
+  { title: "Pretend It's a City — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=aPmWHZwyo5g", archive: "https://www.youtube.com/watch?v=aPmWHZwyo5g", date: "2021-01-13", category: "social" },
+  { title: "Allen v. Farrow — Official Trailer (HBO)", shareUrl: "https://www.youtube.com/watch?v=cKTOj7HnLbo", archive: "https://www.youtube.com/watch?v=cKTOj7HnLbo", date: "2021-01-21", category: "crime" },
+  // ── 2020년 9월 (4) ──────────────────────────────────────────────────────────
   { title: "My Octopus Teacher — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=3s0LTDhqe5A", archive: "https://www.youtube.com/watch?v=3s0LTDhqe5A", date: "2020-09-07", category: "nature" },
   { title: "The Social Dilemma — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=uaaC57tcci0", archive: "https://www.youtube.com/watch?v=uaaC57tcci0", date: "2020-09-09", category: "social" },
-  { title: "Dick Johnson Is Dead — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=wfTmT6C5DnM", archive: "https://www.youtube.com/watch?v=wfTmT6C5DnM", date: "2020-10-02", category: "people" },
-  { title: "David Attenborough: A Life on Our Planet — Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=64R2MYUt394", archive: "https://www.youtube.com/watch?v=64R2MYUt394", date: "2020-10-04", category: "nature" },
-  // ── 2019 ───────────────────────────────────────────────────────────────────
-  { title: "Apollo 11 — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", archive: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", date: "2019-03-08", category: "science" },
-  { title: "Knock Down the House — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=_wGZc8ZjFY4", archive: "https://www.youtube.com/watch?v=_wGZc8ZjFY4", date: "2019-05-01", category: "social" },
-  { title: "American Factory — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", archive: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", date: "2019-08-21", category: "social" },
-  { title: "The Cave — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=TaZkwBWuN2A", archive: "https://www.youtube.com/watch?v=TaZkwBWuN2A", date: "2019-09-27", category: "social" },
-  { title: "For Sama — Official Trailer (PBS)", shareUrl: "https://www.youtube.com/watch?v=vsvBqtg2RM0", archive: "https://www.youtube.com/watch?v=vsvBqtg2RM0", date: "2019-11-07", category: "social" },
-  // ── 2018 ───────────────────────────────────────────────────────────────────
-  { title: "RBG — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=biIRlcQqmOc", archive: "https://www.youtube.com/watch?v=biIRlcQqmOc", date: "2018-05-04", category: "people" },
+  { title: "Dick Johnson Is Dead — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=wfTmT6C5DnM", archive: "https://www.youtube.com/watch?v=wfTmT6C5DnM", date: "2020-09-15", category: "people" },
+  { title: "David Attenborough: A Life on Our Planet — Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=64R2MYUt394", archive: "https://www.youtube.com/watch?v=64R2MYUt394", date: "2020-09-22", category: "nature" },
+  // ── 2020년 3월 (3) ──────────────────────────────────────────────────────────
+  { title: "Tiger King: Murder, Mayhem and Madness — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=acTdxsoa428", archive: "https://www.youtube.com/watch?v=acTdxsoa428", date: "2020-03-20", category: "crime" },
+  { title: "Crip Camp: A Disability Revolution — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=XRrIs22plz0", archive: "https://www.youtube.com/watch?v=XRrIs22plz0", date: "2020-03-25", category: "social" },
+  { title: "The Last Dance — Official Trailer (Netflix/ESPN)", shareUrl: "https://www.youtube.com/watch?v=U2uAYhLIqL0", archive: "https://www.youtube.com/watch?v=U2uAYhLIqL0", date: "2020-03-28", category: "sports" },
+  // ── 2019년 8월 (5) ──────────────────────────────────────────────────────────
+  { title: "Apollo 11 — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", archive: "https://www.youtube.com/watch?v=BJ9YbxqLfzY", date: "2019-08-03", category: "science" },
+  { title: "American Factory — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", archive: "https://www.youtube.com/watch?v=m36QeKOJ2Fc", date: "2019-08-10", category: "social" },
+  { title: "Knock Down the House — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=_wGZc8ZjFY4", archive: "https://www.youtube.com/watch?v=_wGZc8ZjFY4", date: "2019-08-15", category: "social" },
+  { title: "The Cave — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=TaZkwBWuN2A", archive: "https://www.youtube.com/watch?v=TaZkwBWuN2A", date: "2019-08-21", category: "social" },
+  { title: "For Sama — Official Trailer (PBS)", shareUrl: "https://www.youtube.com/watch?v=vsvBqtg2RM0", archive: "https://www.youtube.com/watch?v=vsvBqtg2RM0", date: "2019-08-27", category: "social" },
+  // ── 2018년 6월 (4) ──────────────────────────────────────────────────────────
+  { title: "RBG — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=biIRlcQqmOc", archive: "https://www.youtube.com/watch?v=biIRlcQqmOc", date: "2018-06-01", category: "people" },
   { title: "Won't You Be My Neighbor? — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=FhwktRDG_aQ", archive: "https://www.youtube.com/watch?v=FhwktRDG_aQ", date: "2018-06-08", category: "people" },
-  { title: "Three Identical Strangers — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", archive: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", date: "2018-06-29", category: "crime" },
-  { title: "Free Solo — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=urRVZ4SW7WU", archive: "https://www.youtube.com/watch?v=urRVZ4SW7WU", date: "2018-09-28", category: "sports" },
-  // ── 2017 ───────────────────────────────────────────────────────────────────
-  { title: "I Am Not Your Negro — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", archive: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", date: "2017-02-03", category: "social" },
-  { title: "Icarus — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qXoRdSTrR-4", archive: "https://www.youtube.com/watch?v=qXoRdSTrR-4", date: "2017-08-04", category: "crime" },
-  // ── 2016 ───────────────────────────────────────────────────────────────────
-  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=krfcq5pF8u8", archive: "https://www.youtube.com/watch?v=krfcq5pF8u8", date: "2016-10-07", category: "social" },
+  { title: "Three Identical Strangers — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", archive: "https://www.youtube.com/watch?v=uM5TQ4f7ycw", date: "2018-06-15", category: "crime" },
+  { title: "Free Solo — Official Trailer (National Geographic)", shareUrl: "https://www.youtube.com/watch?v=urRVZ4SW7WU", archive: "https://www.youtube.com/watch?v=urRVZ4SW7WU", date: "2018-06-22", category: "sports" },
+  // ── 2016년 11월 (4) ─────────────────────────────────────────────────────────
+  { title: "13th — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=krfcq5pF8u8", archive: "https://www.youtube.com/watch?v=krfcq5pF8u8", date: "2016-11-01", category: "social" },
   { title: "Planet Earth II — Official Trailer (BBC)", shareUrl: "https://www.youtube.com/watch?v=c8aFcHFu8QM", archive: "https://www.youtube.com/watch?v=c8aFcHFu8QM", date: "2016-11-06", category: "nature" },
-  // ── 2014 ───────────────────────────────────────────────────────────────────
-  { title: "Cosmos: A Spacetime Odyssey — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=Ln8UwPd1z20", archive: "https://www.youtube.com/watch?v=Ln8UwPd1z20", date: "2014-03-09", category: "science" },
-  { title: "Citizenfour — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=XiGwAvd5mvM", archive: "https://www.youtube.com/watch?v=XiGwAvd5mvM", date: "2014-10-10", category: "social" },
-  // ── 2013 ───────────────────────────────────────────────────────────────────
-  { title: "Blackfish — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=G93beiYiE74", archive: "https://www.youtube.com/watch?v=G93beiYiE74", date: "2013-07-19", category: "crime" },
-  // ── 2012 ───────────────────────────────────────────────────────────────────
-  { title: "Jiro Dreams of Sushi — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=M-aGPniFvS0", archive: "https://www.youtube.com/watch?v=M-aGPniFvS0", date: "2012-03-09", category: "people" },
-  // ── 2011 ───────────────────────────────────────────────────────────────────
-  { title: "Senna — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=sfosF-ZAbR4", archive: "https://www.youtube.com/watch?v=sfosF-ZAbR4", date: "2011-06-03", category: "sports" },
-  // ── 2010 ───────────────────────────────────────────────────────────────────
-  { title: "Exit Through the Gift Shop — Official Trailer (Banksy)", shareUrl: "https://www.youtube.com/watch?v=oHJBdDSTbLw", archive: "https://www.youtube.com/watch?v=oHJBdDSTbLw", date: "2010-04-16", category: "music" },
-  // ── 2005 ───────────────────────────────────────────────────────────────────
-  { title: "Grizzly Man — Official Trailer (Werner Herzog)", shareUrl: "https://www.youtube.com/watch?v=uWA7GtDmNFU", archive: "https://www.youtube.com/watch?v=uWA7GtDmNFU", date: "2005-08-12", category: "nature" },
+  { title: "I Am Not Your Negro — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", archive: "https://www.youtube.com/watch?v=5SnzrT7PWZ0", date: "2016-11-12", category: "social" },
+  { title: "Icarus — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=qXoRdSTrR-4", archive: "https://www.youtube.com/watch?v=qXoRdSTrR-4", date: "2016-11-18", category: "crime" },
+  // ── 2014년 10월 (4) ─────────────────────────────────────────────────────────
+  { title: "Citizenfour — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=XiGwAvd5mvM", archive: "https://www.youtube.com/watch?v=XiGwAvd5mvM", date: "2014-10-01", category: "social" },
+  { title: "Cosmos: A Spacetime Odyssey — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=Ln8UwPd1z20", archive: "https://www.youtube.com/watch?v=Ln8UwPd1z20", date: "2014-10-07", category: "science" },
+  { title: "Blackfish — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=G93beiYiE74", archive: "https://www.youtube.com/watch?v=G93beiYiE74", date: "2014-10-13", category: "crime" },
+  { title: "Jiro Dreams of Sushi — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=M-aGPniFvS0", archive: "https://www.youtube.com/watch?v=M-aGPniFvS0", date: "2014-10-19", category: "people" },
+  // ── 2010년 4월 (3) ──────────────────────────────────────────────────────────
+  { title: "Exit Through the Gift Shop — Official Trailer (Banksy)", shareUrl: "https://www.youtube.com/watch?v=oHJBdDSTbLw", archive: "https://www.youtube.com/watch?v=oHJBdDSTbLw", date: "2010-04-10", category: "music" },
+  { title: "Senna — Official Trailer", shareUrl: "https://www.youtube.com/watch?v=sfosF-ZAbR4", archive: "https://www.youtube.com/watch?v=sfosF-ZAbR4", date: "2010-04-16", category: "sports" },
+  { title: "Grizzly Man — Official Trailer (Werner Herzog)", shareUrl: "https://www.youtube.com/watch?v=uWA7GtDmNFU", archive: "https://www.youtube.com/watch?v=uWA7GtDmNFU", date: "2010-04-22", category: "nature" },
 ];
 
 function youtubeId(url: string): string {
