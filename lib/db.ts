@@ -48,7 +48,7 @@ const SEED_ROWS = [
   { title: "Einstein and the Bomb — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=2t9RwElQGhg", archive: "https://www.youtube.com/watch?v=2t9RwElQGhg", date: "2024-02-16", category: "science" },
   // ── 2023년 11월 (4) ─────────────────────────────────────────────────────────
   { title: "Sly — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=_FMulgkArnw", archive: "https://www.youtube.com/watch?v=_FMulgkArnw", date: "2023-11-03", category: "people" },
-  { title: "Robbie Williams — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=FMXxYPvrJs4", archive: "https://www.youtube.com/watch?v=FMXxYPvrJs4", date: "2023-11-08", category: "music" },
+
   { title: "Daughters — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=SMTgDRqfLPE", archive: "https://www.youtube.com/watch?v=SMTgDRqfLPE", date: "2023-11-14", category: "social" },
   { title: "American Symphony — Official Trailer (Netflix)", shareUrl: "https://www.youtube.com/watch?v=wKSMsdq8ONs", archive: "https://www.youtube.com/watch?v=wKSMsdq8ONs", date: "2023-11-29", category: "music" },
   // ── 2023년 7월 (6) ──────────────────────────────────────────────────────────
