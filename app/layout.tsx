@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "폴스비 Firstfruits",
+  title: "폴스비 Link",
   description: "Link Harvest Archive",
 };
 
